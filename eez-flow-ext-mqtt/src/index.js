@@ -70,16 +70,17 @@ const extension = {
                 ];
             }
 
-            get outputs() {
-                return [
-                    ...super.outputs,
-                    {
-                        name: "message",
-                        type: 0 /* String */
-                    }
-                ];
-            }
+//            get outputs() {
+//                return [
+//                    ...super.outputs,
+//                    {
+//                        name: "message",
+//                        type: 0 /* String */
+//                    }
+//                ];
+//            }
 
+/*
             async execute(runningFlow) {
 
                 var client = mqtt.connect("url");
@@ -98,6 +99,35 @@ const extension = {
 
                 return undefined;
             }
+*/
+
+async execute(runningFlow) {
+        var client = mqtt.connect("url");
+
+        await new Promise((resolve, reject) => {
+            client.on('connect', function () {
+                const topicPropertyValue = runningFlow.getInputPropertyValue(this, "topic");
+                const messagePropertyValue = runningFlow.getInputPropertyValue(this, "message");
+
+                if (topicPropertyValue && topicPropertyValue.value != undefined) {
+                    const topic = topicPropertyValue.value;
+                    const message = messagePropertyValue.value;
+                    
+                    client.publish(topic, message);
+
+                    // runningFlow.propagateValue(this, "Message", message);
+                }
+                
+                resolve();
+            });
+
+            client.on('error', function (error) {
+                reject(error);
+            });
+        });
+
+        return undefined;
+    }
 
             getBody() {
                 return React.createElement("pre", null, this.url);
