@@ -1,0 +1,30 @@
+{
+  "name": "eez-flow-ext-say",
+  "displayName": "EEZ-Flow sample extension written in JavaScript",
+  "version": "0.0.4",
+  "author": "Envox",
+  "repository": "https://github.com/eez-open/eez-flow-ext-say",
+  "license": "GPL-3.0-only",
+  "main": "src/index.js",
+  "scripts": {
+    "publish": "npm publish ."
+  },
+  "keywords": [
+    "eez-studio",
+    "eez-flow"
+  ],
+  "dependencies": {
+    "say": "^0.16.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "eez-studio-types": "0.0.31",
+    "mobx": "^6.1.8"
+  },
+  "eez-studio": {
+    "node-module": true
+  },
+  "image": "image.png",
+  "description": ""
+}

@@ -15,7 +15,7 @@ const extension = {
 
         ////////////////////////////////////////////////////////////////////////////////
 
-        class runPythonActionComponent extends ActionComponent {
+        class RunPythonActionComponent extends ActionComponent {
             static classInfo = makeDerivedClassInfo(ActionComponent.classInfo, {
                 properties: [
                     {
@@ -43,6 +43,26 @@ const extension = {
                 mobx.computed(this);
             }
 
+            get inputs() {
+                return [
+                    ...super.inputs,
+                    {
+                        name: "In",
+                        type: 0 /* String */
+                    }                  
+                ];
+            }
+
+            get outputs() {
+                return [
+                    ...super.outputs,
+                    {
+                        name: "Out",
+                        type: 0 /* String */
+                    }                      
+                ];
+            }
+
             async execute(runningFlow) {
 
                 await PythonShell.run(this.pythonScript, null, function (err) {
@@ -52,7 +72,7 @@ const extension = {
             }
         }
         
-        registerClass(runPythonActionComponent);
+        registerClass(RunPythonActionComponent);
 
         ////////////////////////////////////////////////////////////////////////////////
 

@@ -1,5 +1,4 @@
-const play = require('audio-play');
-const load = require('audio-loader');
+const say = require('say')
 
 const extension = {
     eezFlowExtensionInit: (eezStudio) => {
@@ -16,13 +15,13 @@ const extension = {
 
         ////////////////////////////////////////////////////////////////////////////////
 
-        class PlayAudioActionComponent extends ActionComponent {
+        class SayActionComponent extends ActionComponent {
             static classInfo = makeDerivedClassInfo(ActionComponent.classInfo, {
                 properties: [
                     {
-                        name: "AudioPath",
+                        name: "sayText",
                         type: 0 /* String */
-                    },
+                    }
                 ], icon: (
                     React.createElement("svg", {
                         xmlns: "http://www.w3.org/2000/svg",
@@ -38,32 +37,21 @@ const extension = {
             constructor() {
                 super();
 
-                this.AudioPath = '/tmp/Duck-quack.mp3';
+                this.sayText =  'BB3'; 
 
                 mobx.observable(this);
                 mobx.computed(this);
             }
-/*
-            get inputs() {
-                return [
-                    ...super.inputs,
-                    {
-                        name: "In",
-                        type: 0 
-                    }
-                ];
-            }
-*/
-            async execute(runningFlow) {
-                await load(this.AudioPath).then(play);
-            }
 
-            getBody() {
-                return React.createElement("pre", null, this.AudioPath);
+            async execute(runningFlow) {
+                // Does not work
+                //await say.speak(this.sayText);
+                await say.speak("BB3");
+
             }
         }
         
-        registerClass(PlayAudioActionComponent);
+        registerClass(SayActionComponent);
 
         ////////////////////////////////////////////////////////////////////////////////
 

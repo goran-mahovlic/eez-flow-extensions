@@ -12,7 +12,7 @@ const extension = {
 
         ////////////////////////////////////////////////////////////////////////////////
 
-        class readJSONActionComponent extends ActionComponent {
+        class ReadJSONActionComponent extends ActionComponent {
             static classInfo = makeDerivedClassInfo(ActionComponent.classInfo, {
                 properties: [
                     {
@@ -57,11 +57,11 @@ const extension = {
             }
         }
         
-        registerClass(readJSONActionComponent);
+        registerClass(ReadJSONActionComponent);
 
         ////////////////////////////////////////////////////////////////////////////////
 
-        class writeJSONActionComponent extends ActionComponent {
+        class WriteJSONActionComponent extends ActionComponent {
             static classInfo = makeDerivedClassInfo(ActionComponent.classInfo, {
                 properties: [
                     {
@@ -108,7 +108,7 @@ const extension = {
             }
         }
         
-        registerClass(writeJSONActionComponent);
+        registerClass(WriteJSONActionComponent);
 
         ////////////////////////////////////////////////////////////////////////////////
     }
