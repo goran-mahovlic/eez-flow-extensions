@@ -52,6 +52,7 @@ const extension = {
 
             async execute(runningFlow) {
                 const file = jsonfile.readFileSync(this.JSONpath)
+                console.dir(file)
                 runningFlow.propagateValue(this, "Out", file);
             }
         }
@@ -99,7 +100,9 @@ const extension = {
             }
 
             async execute(runningFlow) {
-                jsonfile.writeFileSync(this.JSONpath, "In")
+                const inputPropertyValue = runningFlow.getInputPropertyValue(this, "In");
+                const file = inputPropertyValue.value;
+                jsonfile.writeFileSync(this.JSONpath, file)
                 // runningFlow.propagateValue(this, "Out", this.rawJSON);
 
             }
