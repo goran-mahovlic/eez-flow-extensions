@@ -1,0 +1,31 @@
+{
+  "name": "eez-flow-ext-audio-play",
+  "displayName": "EEZ-Flow sample extension written in JavaScript",
+  "version": "0.0.4",
+  "author": "Envox",
+  "repository": "https://github.com/eez-open/eez-flow-ext-audio-play",
+  "license": "GPL-3.0-only",
+  "main": "src/index.js",
+  "scripts": {
+    "publish": "npm publish ."
+  },
+  "keywords": [
+    "eez-studio",
+    "eez-flow"
+  ],
+  "devDependencies": {
+    "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "eez-studio-types": "0.0.31",
+    "mobx": "^6.1.8"
+  },
+  "eez-studio": {
+    "node-module": true
+  },
+  "image": "image.png",
+  "description": "",
+  "dependencies": {
+    "audio-loader": "^1.0.3",
+    "audio-play": "^2.3.1"
+  }
+}
