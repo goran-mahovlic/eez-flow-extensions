@@ -43,9 +43,23 @@ const extension = {
                 mobx.observable(this);
                 mobx.computed(this);
             }
-
+/*
+            get inputs() {
+                return [
+                    ...super.inputs,
+                    {
+                        name: "In",
+                        type: 0 
+                    }
+                ];
+            }
+*/
             async execute(runningFlow) {
-                load(this.AudioPath).then(play);
+                await load(this.AudioPath).then(play);
+            }
+
+            getBody() {
+                return React.createElement("pre", null, this.AudioPath);
             }
         }
         
