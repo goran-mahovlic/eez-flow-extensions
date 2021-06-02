@@ -20,7 +20,7 @@ const extension = {
                 properties: [
                     {
                         name: "pythonScript",
-                        type: 0 /* String */
+                        type: 2 /* String */ 
                     }
                 ], icon: (
                     React.createElement("svg", {
@@ -37,7 +37,7 @@ const extension = {
             constructor() {
                 super();
 
-                this.pythonScript =  '/tmp/test.py'; 
+                //this.pythonScript =  '/tmp/test.py'; 
 
                 mobx.observable(this);
                 mobx.computed(this);
@@ -65,7 +65,7 @@ const extension = {
 
             async execute(runningFlow) {
 
-                await PythonShell.run(this.pythonScript, null, function (err) {
+                await PythonShell.runString(this.pythonScript, null, function (err) {
                   if (err) throw err;
                   console.log('finished');
                 });
